@@ -1,0 +1,28 @@
+Sass project file structure:
+
+In the sass directory at setup, there are five folders and a main sass file. The main sass file contains import statements that import all of the files contained in the folders into this one file. I will provide a brief overview of the contents of each of the folders below:
+
+Abstracts folder:
+  _mixins.scss ~ Contains 5 mixins at the moment that I anticipate to be useful more than once in the project build. 
+  1) Centering absolute positioned elements both horizontally and vertically.
+  2) Default pseudo element properties that must be there whenever you use them, values are generally don't change.
+  3) Creating text gradients using brand colors
+  4) default input state, could apply this to all inputs instead of using a mixin, but not sure if we want all of them to have no outline or border at this stage, so a mixin is safer.
+  5) Media Query breakpoints for main device groups. Content first design instead of design width design might be better to switch to, but will re-evaluate that if current breakpoints become a problem, which is unlikely.
+  _variables ~ Contains variable for font family, colors to be used throughout the site and grid margins so that they can by easily changed when using media queries.
+
+Base folder:
+  _animations ~ Empty for now but will be needed as the design behavior is incorporated.
+   _reset ~ Removes all margins and paddings from element (including their before and after states), also applies a box-sizing property to border-box. This means that an elements size will not change when margins and paddings are applied, this is great for preventing unexpected positioning issues. Also set the font size to 62.5% so that 1 rem = 10px. If all element dimensions are specified using rem, then if the user changes their default font size, all fonts in your css will scale accordingly.
+    _typography ~ Just default font family, line-height and color for now.
+     _utilities ~ Made classes to apply margin top or bottom of elements, that way if we want to reuse html and css components, its easy to plug them in without worrying about margin and padding style differences, we can just remove the class.
+
+Components folder:
+  Empty for now, but every time we create a form or button etc that we want to reuse across our website, then we will include a new styles file for each of them here.
+
+Layout folder:
+  _grid.scss ~ Defines row and column dimension for a four column 1 grid layout. Can have 1, 2, 3, or 4 colums in a row. A function might handle the column width calculations better, so we wouldn't need to be locked into an up to four column row, but the design so far suggests this should be okay.
+
+Pages folder:
+  _home.scss ~ Stores generic, non-component-based styles for each of the main pages on our website.
+
