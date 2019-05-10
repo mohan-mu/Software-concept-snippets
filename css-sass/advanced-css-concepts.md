@@ -2,7 +2,7 @@ I have been learning Advanced CSS with SASS, and think it's going to be really u
 
 Here are some of the key things SASS will be super useful for when it comes to building the website (with my opinion on potential problems):
 
-7-in-1-pattern:
+##### 7-in-1-pattern:
 
 The seven in one pattern is where you seperate your css into 7 different folders. Sass lets you compile them all into the main CSS file at the end. I found this to be a really intuitive way to organise files. I like that you can end up building your own component library of reusable forms, buttons, cards etc. 
 
@@ -12,16 +12,16 @@ My problem with this approach is that it makes you order your code into groups o
 
 Overall though, I am a fan of the approach and could play around with the folder grouping, though it's probably best to stick with the standard so that anyone working on it will understand where to find things if they know the model.
 
-BEM model:
+##### BEM model:
 
 The bem model is where we give a class to every single element on the page using a Block__element__modifier format.
 
 I think of blocks as a component level container, elements are the headings, paragraphs and images etc, whilst the modifiers are an extra bit of the class that lets you target things with more specificity if you need to make them look slightly different (e.g if you have two h3 tags in the same block but you want one of them to look different).
 
 
-HTML:
+###### HTML:
 
-
+```html
 <div class="card card__side card__side--back card__side--back-1">
   <div class="card__cta">
     <div class="card__price-box">
@@ -31,11 +31,11 @@ HTML:
     <a href="#popup" class="btn btn--white">Book Now</a>
   </div>
 </div>
+```
 
+###### CSS:
 
-CSS:
-
-
+```css
 .card {
 
     &__price-box {
@@ -55,15 +55,16 @@ CSS:
     }
 
 }
+```
 
 
-
-Mixins:
+###### Mixins:
 
 The ability to make mixins is a really great benefit of Sass too. We can use them to call media queries in our css like this:
-
+```css
 @include respond(phone) {}
 @include respond(tablet-port) {}
+```
 
 This is really easy to read for people, and easy to adjust in the mixin files.
 
