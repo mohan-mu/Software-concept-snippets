@@ -1,0 +1,129 @@
+**1) Nouns and Verbs**
+
+*Identify nouns and verbs in problem description. I used this awesome syntax highlighter to do it for me: https://english.edward.io*
+
+**Nouns** represent potential classes/instances to be contained in the program. In brackets next to the noun I have suggested inheritance relationships between classes that share similar characteristics. I have also added a number at the start of each noun to represent how many instances of this class I expect there to be. n Represents and unknown number.
+
+**Verbs** represent potential methods to be contained within the program. In brackets next to the verb/method I have listed the classes I expect to interact with the method.
+
+![Nouns and verbs syntax highlighter](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bdc49ccb7cfb2869d4b294b/ee3a2b360794e7a1369d276bec462b02/Shoppy-nouns-and-verbs.png)
+
+***Nouns***
+
+- (1) Store/computer system/session [Main class, contains all other classes]
+- (0) Person [Not in problem, but customers and staff can be instance of person]
+- (n) Customers [Person]
+- (n) Staff [Person]
+- (1) Catalogue
+- (n) Shopping baskets 
+- (0) Products 
+- (n) Food Products [Products]
+- (n) Clothing Products [Products]
+- (1) Report/Session data recorder
+
+***Verbs***
+
+- Select a product [Customer]
+- Indicate how many (quantity) [Customer, catalogue]
+- Browse by category [Customer, catalogue]
+- Add a product [Customer, catalogue, basket]
+- Remove a product [Customer, basket]
+- Purchase items [Customer, basket]
+- Monitor stock quantities [Staff, catalogue]
+- Add product lines [Staff, catalogue]
+- Remove product lines [Staff, catalogue]
+- Identify best sellers [Staff, catalogue, products, report, system]
+- Report on profits from sales [Staff, products, customer, basket, system]
+- Remember active product lines [System, report, products, staff]
+- Remember stock quantities [System, catalogue, basket, staff, customer, report]
+
+**2) Identify Main Actors**
+
+*Main actors are people, things or external hardware that have a role, or interaction story within the program.*
+
+- **Customer** is an actor who can browse the catalogue, add/remove items to their basket and purchase items.
+
+- **Staff** is an actor who can add/remove product lines form the warehouse, monitor stock quantities and identify best sellers, as well as report on profits from sales.
+
+- **Report** is an actor that saves important and meaningful data throughout the lifecycle of the program, and then prints a downloadable text file of this data at the end of the program.
+
+
+**3) User Stories and Use Case Diagram for main actors**
+
+***Customer User Story***
+
+1. Introduction text displayed
+2. Log in
+3. Enter name
+4. Greeted
+5. Select category to browse by (All, food, clothes)
+6. Add product to basket
+7. View basket
+8. Remove product from basket
+9. Purchase products in basket
+10. Log out
+11. End session
+
+***Staff User Story***
+
+1. Introduction text displayed
+2. Log In
+3. Enter name
+4. Greeted
+5. Add product lines
+6. Remove product lines
+7. View reports 
+    - Best seller
+    - Profits
+    - Low stock alerts
+8. Log out
+9. End session.
+
+***Report User Story***
+
+*This user story interleaves all of the other user stories. It relies on data created by other actors before it can record them*
+
+1. Create text file (upon start of program)
+2. Display Profits (Total of all customer purchases - manufacturing percentage)
+3. Display Best Seller.
+4. Display Low Stock Alerts for food and clothes.
+5. Display list of active product lines 
+    - Quantity changes (after customer purchase)
+    - Products added by staff
+    - Products removed by Staff
+6. Bonus stats
+    - Customer with highest basket total
+    - Employee of the month (staff member who made the most changes)
+7. Print downloadable text file (End of program).
+
+***Use Case Diagram***
+
+Here is a useful tutorial for creating use case diagrams: 
+https://www.lucidchart.com/pages/uml-use-case-diagram
+In my diagram, I chose to combine all user stories into one use case diagram. This meant that I had to simplify the use case steps (abstracting add item instead of saying add item to warehouse or add item to basket specifically). 
+
+I used the Person actor to represent steps that both the customer and staff members are involved in. Then I created a staff actor and customer actor (both extensions of person actor) to show the actions that are specific to them. This diagram is a simple overview that allows me to communicate what the main actors in my program will be able to do.
+
+![Shoppy Use Case Diagram](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bdc49ccb7cfb2869d4b294b/9764d10ff2e28a8420403e8db12cdd42/Untitled_Diagram-2.png)
+
+**4) Create a Class Diagram**
+
+Here is an amazing tutorial which breaks down creating class diagrams:
+https://www.smartdraw.com/class-diagram/
+ In my diagram, I chose to represent the structure of each class(name, fields and methods), inheritance (generalisation) and multiplicity relationships (how many instances of one class interacts with how many instances of another class).
+
+This diagram allows me to get a clear overview of all of the classes in my program and the data fields they contain, as well as the methods I expect to use in the program. Drawing this out really helped me decide which methods (verbs) belonged to which class or class instance (nouns).
+
+![Shoppy Class Diagram](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bdc49ccb7cfb2869d4b294b/387f2eb16ac2da865322d331e001c429/Shoppy_Class_Diagram.png)
+
+**5) Create a sequence diagram**
+
+Sequence based diagrams allow you to document the order in which events happen in your program. For simple programs, you can use one sequence diagram to represent the whole thing. For more complicated programs, you can use sequence diagrams to represent smaller scenarios within your program. 
+
+***Staff and Report Sequence Diagram***
+
+![Staff and report sequence diagram](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bdc49ccb7cfb2869d4b294b/75f63d196313f8a29e83b219bf0cf34f/Staff_and_Report_Sequence_Diagram.png)
+
+***Customer and Report Sequence Diagram***
+
+![Customer and report sequence diagram](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bdc49ccb7cfb2869d4b294b/bf8e9b8129d454c1700ec822ae976728/Customer_and_report_sequence_diagram.png)
