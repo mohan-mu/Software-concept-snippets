@@ -1,0 +1,30 @@
+While waiting for the mobile design of the site I decided to test all of my code so far to make sure that it has been written as well as it can be.
+
+HTML VALIDATOR
+
+I stared by testing my HTML markup with the W3C Markup Validation Service: https://validator.w3.org/
+which highlights any areas of your code that doesn't match up to semantic web standards.
+
+There were only three semantic errors, but those were associated with the embedded Google Maps iFrame, but I fixed those anyway.
+
+A couple of other good html validators are:
+
+Page Valet: http://valet.webthing.com/page/
+WDG HTML: http://www.htmlhelp.com/tools/validator/
+
+CSS VALIDATOR
+
+Similar to the HTML validator, the CSS validator (https://jigsaw.w3.org/css-validator/) check that the css is semantic and well written. It's a good starting point but does not cover all of the things that could go wrong with CSS as semantically as CSS lint does, which I used next. I had no errors when using the CSS validator, probably because the main stylesheet is auto-compiled using Sass which only compiles when the CSS are free of errors like this. 
+
+CSS LINT
+
+As the CSS validator only checks for basic errors, I wanted to make sure that the CSS was tested a little more thoroughly. A quick Google search revealed that CSS Lint is a popular CSS testing tool. I used the online version which can be found here: http://csslint.net/#L265
+
+This tool did pick up a lot of issues. Here are the ones I have fixed:
+
+CSS RESET: Apparently using the universal selector (*) to reset page styling slows down the browser. So I replaced my reset with a popular reset script written by Eric Meyer, found here: https://cssreset.com/scripts/eric-meyer-reset-css/. The problem with this reset is that it doesn't reset before and after pseudo styles. I could do this with very few lines of code using the universal selector, but doing this with Eric's reset code produces a long document of code. Though the universal selector could be doing this behind the scenes. I'd have to look into exactly how the universal selector works to understand whether the performance difference is worth the extra lines of code or not.
+BROWSER COMPATIBILITY: One of the errors that I'm glad to have used CSS Lint to find is browser support. Many of my CSS properties were from newer versions of CSS, so browser compatibility is an important issue to consider to make our site more accessible. To resolve this issue, I used an auto prefixer tool (https://autoprefixer.github.io/). To do this, you copy your css code into the tool and it generates the same css, but for each property that requires support across different browers, it automatically added the support in the form of prefixed statements. It's really helpful and saves a ton of time.
+NO UNITS FOR 0 VALUES: This was a useful bit of advice I hadn't considered before. On the github page related to this particular flag, the reason behind not adding units (px, %, em, rem, vh, vw etc) for 0 values is: "It's recommended to remove units for all zero length values because these units aren't being used by the browser and therefore can be safely removed to save bytes." It's always fun getting to delete redundant code. There are tools that allow you to do this automatically.
+OUTLINE FOCUS STATE: I generally reset the default styling of elements like input fields and buttons that have default borders or colors when clicked or active. This lets me completely customise the styling. The css lint tool said that default properties that only appear on focus, should only be styled within the :focus selector.
+NO ID SELECTORS: This was an interesting one. The idea behind this flag is that a huge benefit of CSS is the ability to reuse style rules in multiple places. When you start out with an ID selector, you're automatically limiting that style to a single element. Eventually you will end up needing or wanting to reuse the style specified with the ID, and you'll end up defining a class for that purpose. By not using IDs from the start, you allow for the maximum level of reusability with your CSS. You can still use id's for JavaScript to target, but not within CSS. I currently use the Block__element--modifier naming convention which only uses classes and handles specificity really well, but I'm not sure how I feel about this flag.
+ALL RULES: For a complete list of rules contained within CSS Lint, see: https://github.com/CSSLint/csslint/wiki/Rules
