@@ -1,0 +1,147 @@
+**Test Driven Development**
+
+Motivations, walkthrough explanation
+
+1.**Define your program problem**
+
+A program that lets you list people, places, objects and dreams etc that matter to you. For each of these things, you list qualities and attributes associated with them that matter to you. At the end, you pick the top 10 qualities/attributes that are most important to you. Then you compare each quality against every other quality to establish order of importance. You end up with a list of your top 10 values in order of importance.
+
+2.**List bare minimum needed to get a working version of this program running**
+
+- Enter name of person
+
+- Enter 2 qualities associated with that person
+
+- Choose which is more important to you
+
+- Return list of qualities in order of importance.
+
+**Set up test suite file and require it in your main program file**
+
+![screenshot of test_suite boilerplate](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/37429042b0a1883a5e8b33096f8ddf00/test_suite.png)
+
+3.**Write a failing test for the first item on your list**
+
+The first item on my list was "Enter name of person". 
+Before writing any code in the main program at all I wrote a failing test, it will fail because there is no code to make it pass yet.
+
+![screenshot of failing test](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/2bf0bf6821448c2e4c72f4af2f713d9a/failing_test.png)
+
+My goal right now is to write the simplest test possible that will let me check to see if a name has been entered for a person in the program. So the test checks to see if you have created a person, and if you can enter a name for that person.
+
+The main part of the test is the assert_equal() method. This method accepts two arguments, the first is the output of your code, the second is the expected output of your code. If the actual output matches the expected output, then your code has passed the test.
+
+In the test I wrote above, I am testing to see if my program outputs the name "Harry Potter" when you run the get_name method on a newly created person object. 
+
+4.**Write code to make your test compile**
+
+When I ran this test, the following error appeared:
+
+![screenshot of failing test error message](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/e71439833961d9c8c74ca1b0dc0f4bf4/test_message.png)
+
+This error message is telling us that we have not created a Person class yet. so to fix it, all we need to do is create a Person class stub in out values.rb file, which looks like this:
+
+![screenshot of values program code](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/c070f81f084292397e4c76a588d1cd84/code_snippet.png)
+
+When we run the test again, we get a new error message:
+
+![screenshot of failing test error message](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/79d0ac44f09b62539665927448d1f45d/test_message.png)
+
+This error message is telling us that we have given the wrong number of arguments to the person object. In the parentheses, we entered the name "Harry Potter", but in the Class stub we have not yet initialized a name variable for the person object. We can fix this by initializing the class Person with a name variable as follows:
+
+![screenshot of values program code](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/4eb84572ea4e0323ab0ecfefb2c2b27c/code_snippet.png)
+
+Running our tests again leaves us with the following error message:
+
+![screenshot of failing test error message](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/02063f06b951003946b968092d5f6655/test_message.png)
+
+This error is telling us that we need to create a get_name method for our Person class. So we can fix this by creating a get_name method stub in our Person class. 
+
+![screenshot of values program code](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/ea72e4a0822e94626105004e75f7c4d1/code_snippet.png)
+
+When we run out tests now, we no longer get any error messages which means that our program successfully compiles. however, we are still left with a failing test.
+
+5.**Make your failing test fail.**
+
+Your next task is to make your failing test pass as quickly as possible. You can be as hacky as you like in this step, we will be refactoring later. Your only goal right now is to make it work. This is what our failing test message currently looks like:
+
+![screenshot of failing test error message](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/715e08c74b79f281330183b8157644e9/test_message.png)
+
+This failing test message is telling us that the output of out get_name method does not match the expected output of our assert_equal() method.
+
+In the assert_equal method, we are saying that when we create a new person object from the person class and run the get_name() method on it, the expected output should be "Harry Potter".
+
+The reason out get_method is not returning the right name at the moment is because it is an empty method stub that doesn't return anything, it returns 'nil' as suggested in the error message above.
+
+To fix this as quickly as possible, we can simply return "Harry potter" in our get_name method. This is a really poor solution, but it let's us pass our test as quickly as possible:
+
+![screenshot of values program code](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/245f0d649fe4350eedc7b0b8b930db21/code_snippet.png)
+
+If we run our test again, we will see that our test has passed, yayyyyy, high five!
+
+![screenshot of failing test error message](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/1dfca3a7344966bbd0ea9de4ad071c3b/test_message.png)
+
+6.**Refactor your code to remove duplication and to make it better**
+
+Refactoring is an important part of test driven development. Once you have gotten your code to work, you now have something you can edit and make better. For many programmers, they are preventing from building software because of perfectionism. They want to make their code as elegant as possible, but often this gets in the way of them building programs, because they are so worried about getting things perfect that they don't get anything done. Whereas it is much easier to edit existing code to make it better than it is to write perfect code the first time around.
+
+To refactor my current code, I decided to initialize the name variable to "Harry Potter" instead of just returning "Harry Potter" in the get)name method (shiver). This is much better because now the name variable is being used. Whereas before it was being totally ignored in my program:
+
+![screenshot of values program code](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/f537a0e6b71b4c960a2bc23e7a1a140f/code_snippet.png)
+
+Okay, so our first failing test has been completed but I am not ready to cross "Enter name of person" from my to do list yet. There are a few more things I would like this method to be able to do first. So it's time to create another failing test.
+
+**Write a new failing test**
+
+My next test checks to see if my program outputs the name "Hermione Granger" when you run the get_name method on a newly created person object. Here is what the test looks like:
+
+![screenshot of test code snippet](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/774a5c7584517eae5c338b4796fe8d61/failing_test.png)
+
+As I am still testing the get_name method, there was no need to create a new test method. instead I just added a new assert_equals method with a different expected output.When I run this test, the following failure message is shown:
+
+![screenshot of failing test error message](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/e6b3eb7f95b87c9983e668055601fd11/test_message.png)
+
+This entire error message is telling us that we ran two tests (assertions) and that one of them failed. The one that failed is the one we just wrote, where we changed our expected output to "Hermione Granger" instead of Harry Potter. The error message is telling us that our actual output was "Harry Potter".
+
+Our next task then is to make sure that both of the tests pass. The reason why this test is not passing is because we are setting a constant value for our name variable, which means that every new Person object is created with the same name. 
+
+The simplest way to fix this is by going into our Person class and instead of initializing our variable name to a name string, we can initialize it to the value of the variable passed into the Person class whenever a new instance of that class is created. A screenshot will help this make a little more sense:
+
+![screenshot of test code snippet](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/92426d3c83c7e8995583236509ce1821/code_snippet.png)
+
+**Change your test**
+
+After running the tests again, we still get the same error message telling us that our expected output "Hermione Granger" does not match our actual output "Harry Potter". 
+
+In this case, there is a problem with how our test has been written.
+inside of our test, we create a new Person object and assign it to a variable called person. All of or tests then operate on the single instance of that one person we created.
+
+So to make the test pass, we need to remove the assumption that we will only be creating one Person object, and allow for multiple People objects to be created. We can do this by creating new People and running the get_name method inside of our test itself. here is what our newly refactored test looks like:
+
+![screenshot of test code snippet](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/57ea6ebf3241d157c93fd26e64de1995/code_snippet.png)
+
+Now when we run our tests they pass with flying colours, yayyyy high five!
+
+**Refactor your code again**
+
+Now that our tests pass it is time to refactor your code again. The biggest niggle I have with this program so far is that the naming process for each person is too rigid. I'd like to make it more flexible by allowing users to enter their own name for each person that they create.
+
+So when writing my next test, instead of specifying a set string for the name, I use gets.chomp() as an argument instead, which allows the user to input a string.
+
+![screenshot of test code snippet](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/fba384d68f5b07037826fb50ef919dfc/code_snippet.png)
+
+When I run the tests again, provided I enter the name which matches the assertion string ("Ronald Weasley"), all tests pass. YAYYYYY, high five!
+
+![screenshot of test code snippet](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/0f262ae9d1adb85c09a414069f077fd2/test_message.png)
+
+However, the thought of having to write "Ronald weasley" every time I run this program to make the test work is really offputting to me. So for the time being I will comment out this test and use the constant "Harry Potter" and "Hermione Granger" tests for building out the rest of the program.
+
+![screenshot of test code snippet](https://trello-attachments.s3.amazonaws.com/5bcc79d13e179d8b74777a59/5bf017ef39b3ed53a8f77dff/e97b6d4d66b09c021d8af6a8352a1482/code_snippet.png)
+
+- ~~Enter name of person~~
+
+- Enter 2 qualities associated with that person
+
+- Choose which is more important to you
+
+- Return list of qualities in order of importance.
