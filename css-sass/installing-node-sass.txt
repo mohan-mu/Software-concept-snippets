@@ -1,0 +1,31 @@
+Set up Sass project structure following the 7-in-1 pattern.
+
+Set up sass
+
+Command line from root directory:
+
+These commands installs sass and adds it as a developer dependency in our project. When you clone the repo on a new machine where you have not installed sass, if they are developer dependencies in your project, then you can install them by running "npm install" in your project instead of having to install them individually.
+
+ $ npm install node-sass --save-dev
+ $ mkdir sass
+ $ cd sass
+ $ touch main.scss
+
+
+Package.json:
+
+Add the compile:sass key value pair below to the scripts section of your package.json file.
+
+When you run "npm compile:sass" in your terminal, the imported sass files inside your main.scss file will be compiled inside of your main css stylesheet. 
+
+The watch flag at the end of the command (-w) watches for any changes to your sass files. When a change is made (recognised when your sass files are saved), the sass is compiled automatically, so that you don't have to run the compile command every time you want to see the changes you made.
+
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  }
+
+
+A screenshot of what your terminal will look like after you run this command and save your sass files after changes have been made:
+
+￼[screenshot here]
+
