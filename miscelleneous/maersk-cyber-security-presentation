@@ -1,0 +1,77 @@
+**Introduction**
+
+Hello, I’ve actually been really excited about this presentation today.
+I didn’t choose a topic for my presentation, so I ended up with the last one on the list, which happened to be Maersk. I’d never have chosen that one by myself, because it didn’t sound that fun, but it actually turned out to be pretty interesting.
+
+Before I jump into the ins and outs of the malware attack that affected Mearsk, I’ll give you a little bit of an overview of who Mearsk are if you are not familiar with them.
+
+**Who Is Maersk?**
+
+So Maersk is a global transportation company, and they are responsible for about 15% of the world’s shipping efforts, which is a huge scale (Mansfield-Devine, 2017). 
+
+Maersk started out as an oil rig company headed by Captain Peter Maersk moller in 1904 and his son Arnold Peter Moller. They exploded in popularity during world war one, and expanded beyond transporting oil to transporting a wide range of goods. Chances are, if you have bought a kilogram of gummy bears from Amazon (You should), then it’s likely that Maersk has had a hand in getting them to you.
+
+The reason I am telling you this, is to give you an idea of the sheer scale of the company, and to put into perspective the sheer scale of damage that cyber security attacks such as malware can have globally. 
+
+So, what happened to our favourite gummy bear shipper to make it the focus of our talk today? And why do I sound so happy about that. 
+
+**NotPetya Definition and Description**
+
+Okay, so last year in 2017, Maersk became a victim of a pretty nasty malware infection known as NotPetya (Thompson, 2017). One of the interesting things about this case is that Maersk was not the main target of this attack. A Ukrainian company called MEDoc was. However, the only reason MEDoc was targeted was because it produces financial accounting software that is used by the majority of global companies based in the Ukraine. So while MEDoc was targeted, it was not THE main target. 
+
+The strain NotPetya was first introduced to MEDoc’s legitimate software updater process, which meant that any computer who installed an update of the MEDoc accounting software, would then automatically download NotPetya to their own computers. 
+
+According to Microsoft (2017), the code contained within the NotPetya strain enabled duplication across all machines in the same network of computers in three key ways:
+
+-	Stealing credentials or re-using existing active sessions, which means that they would look for authentication codes on one computer, use them to gain access to higher security levels and then look for even higher credentials until they had access to all computers in the network.
+
+-	Using file-shares to transfer the malicious file across machines on the same network
+
+-	Exploiting weaknesses in operating systems (SMB vulnerability in Microsoft called eternal Blue, which allows the ransomware to spread through an organisation through a local network).
+
+Once this strain had managed to work its way into all computers across the network, it encrypted all of the data on all of the machines, and then displayed a ransom message to each screen demanding $300.
+
+In this way, the NotPetya strain resembled ransomware in that it displayed a ransom message on the screen of locked down computers. However, there are a few differences that distinguished NotPetya enough for it to be labelled not Petya, or in other words not Ransomware (Petya was a well-known ransomware attack perpetrated the year before).
+
+First of which is that usually with cases of ransomware, once a user pays the ransom then they are given an encryption key that enables them to decrypt and gain access to their data again, which was not the case in the NotPetya attack, because with this attack, there was no way for the data to be decrypted again (even by the perpetrators).
+
+Secondly, the perpetrators did not actually care about getting paid. Most ransomware perpetrators use a bunch of different bitcoin wallets that they regularly change the address to to avoid getting caught. Whereas there was only one bitcoin wallet associated with the NotPetya strain, and this was cashed out fairly quickly before any real money could be made.
+
+Therefore, the main aim of NotPetya was to cause as much destruction as possible.
+
+**Damage caused to Maersk**
+
+Maersk was hit pretty hard by the NotPetya strain. They ended up having to reinstall 4000 servers, 45,000 new computers and 2500+ applications as a result of the attack (Chirgwin, 2018). During this time, Maersk had to revert to using manual systems for 10 days in which they recorded a 20% drop in their ability to function normally (for example, 72 ports had to be temporarily closed down). Overall, they ended losing 300 million dollars because of NotPetya.
+
+However, most of this cost did not come from paying the ransom, but from general operational costs including reverting back to using manual systems, not being able to invoice and the cost of restoring their digital assets where they were able to, though some of that data loss did end up being permanent where there were no recent (or any) backups.
+
+**Preventing future attacks**
+
+NotPetya was an extremely well thought out and organised attack. It mutated beyond malware, ransomware and worms to create a whole new kind of attack that had never been seen before. This is one of the reasons why it is so difficult to create a solid defence against cyber attacks, because the nature of software is that it is always evolving. Software becomes outdated, ant-virus software takes time to catch up with the new vulnerabilities created by software updates. There are always vulnerabilities.
+
+But there are some ways that Maersk could reduce the chance of a being the victim of this type of attack again. According to Microsoft, they could download a new update for their operating system which included fixes for the vulnerabilities in the SMB protocol exploited by the NotPetya strain.
+
+Besides this, Mansfield-Devine (2017) argues that a multi-layer defence plan is essential to preventing this kind of attack from happening again. This includes updating anti-virus software regularly as one measure and adding a secure way to manage access privileges and credentials so that they are not easily accessible (e.g. a third party tool that password protects credential information) etc. 
+
+It is also important that Maersk do not focus purely on preventative measures, because this can prevent them being able to identify threats as they occur and deal with them appropriately. So education and training staff members in identifying risk signatures could also be useful.
+
+**Conclusion.**
+
+Overall, we can see that cyber attacks can have hugely devastating consequences. Unlike most physical crimes, cyber-attacks can create millions of victims in an incredible short space of time. Maersk is the leading global transportation company and was brought to it’s knees for 10 days, but if they have followed the prevention tips contained in this presentation, then I’m sure you’ll get your gummy bears in no time. Thank you for listening.
+
+**References:**
+
+- Mansfield-Devine, Steve. 2017. Ransonware: The most popular form of attack. Computer Fraud & Security (10), pp. 15-20.
+
+- Microsoft. 2017. New ransomware, Old techniques: Petya adds new worm capabilities. Accessed [2/11/2018]. Available from: https://cloudblogs.microsoft.com/microsoftsecure/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/?source=mmpc
+
+- Thompson, 2017: https://www.theregister.co.uk/2017/06/28/petya_notpetya_ransomware/
+Maersk, 2018: https://www.maersk.com/maerskline-at-90/expansion
+Netwave, 2018 http://www.netwavesystems.com/maersk-line-worlds-largest-shipping-company/
+
+- Richard Chirgwin, IT ‘heroes’ saved Maersk from NotPetya with ten-day reinstallation bliz, The Register, 25 Jan 2018. Retrieved from https://www.theregister.co.uk/2018/01/25/after_notpetya_maersk_ replaced_everything This article reports how the shipping giant Maersk dealt the with NotPetya malware outbreak in 2017, which costs Maesk more than 300 million dollars.
+
+- US-CERT, 2017: Alert (TA17-181A) Petya Ransomware, US-CERT (2017). [Online]. https://www.us-cert.gov/ncas/alerts/TA17-181A. Accessed 7 Nov 2017
+
+
+
