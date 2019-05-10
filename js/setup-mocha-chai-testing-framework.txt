@@ -1,0 +1,56 @@
+Set up the mocha and chai test suite, made a test directory, and linked up the test suite with an example js file in a JavaScript folder. 
+
+So when it comes to writing JavaScript for the website, it is already set up for the person doing this.
+
+Here is what I did to set them up (for future reference).
+
+Command Line (project root directory):
+
+
+  $ npm install mocha chai --save-dev
+  $ mkdir test
+  $ cd test
+  $ touch intygrateTest.js
+
+
+All of our test files are stored in a folder called "test". Each of the test files end with the word "Test" with an uppercase T.
+
+At the top of each of our test files, we must include chai with the following require statement:
+
+
+  const chai = require('chai');
+
+
+Whenever we want to use a new kind of test assertion (chai has many), then we store it in it's own variable like this:
+
+
+  const assert = chai.assert;
+
+
+If you want to access variable names or methods in a normal javaScript file, you must export them first. There are a few ways to do this. I chose to export my variables and methods as properties inside an object so that they could all be exported at once. I will change to exporting them individually if I end up working on the javaScript, but for now just wanted to get the test suite up and running.
+
+Here is what the javaScript file we are testing looks like (js/intygrate.js):
+
+
+  module.exports = {
+    name: "intygrate",
+  }
+
+
+
+Here is what the test file looks like (test/intygrateTest.js):
+
+  const chai = require('chai');
+  const name = require('../js/intygrate.js').name;
+  const assert = chai.assert;
+
+  describe('Test suite should run', function() {
+    it('should return true when passed true', function() {
+      assert.equal(true, true);
+    });
+    it('should return "integrate" when name is called from the intygrate.js   file', function(){
+      assert.equal(name, "intygrate");
+    });
+  });
+
+
