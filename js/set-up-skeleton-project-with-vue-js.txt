@@ -1,0 +1,28 @@
+NPM was causing problems when trying to do this because it said that I didn't have access permissions even as an administrator. Uninstalling npm and reinstalling it again solved this issue.
+
+Installing vue.cli:
+
+```
+
+npm install -g @vue/cli
+
+
+```
+
+Creating a project with vue.cli:
+
+```
+
+vue create hello-world
+
+
+```
+vue cli wizard options chosen:
+
+    Please pick a preset: CSS Pre-processors
+    Pick a linter: ESLint + Airbnb
+    Pick a unit testing solution: mocha and chai
+    Where do you prefer placing config for Babel, PostCSS [etc...]: In package.json
+    Save this as a preset for future projects? enter
+    Pick the package manager for installing dependencies: NPM
+    Done
