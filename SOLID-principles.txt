@@ -1,0 +1,101 @@
+I DO NOT CLAIM CREDIT FOR ANY OF THESE SNIPPETS, SOURCES LISTED.
+
+____________________________________________________________________________________________
+
+SOLID PRINCIPLES
+
+Source: https://en.wikipedia.org/wiki/SOLID
+
+Solid is a set of five design principles intended to make software designs more understandable, flexible and maintainable.
+
+The theory of SOLID was introduced by Robert C. Martin in his 2000 paper Design Principles and Design Patterns, also the SOLID acronym was introduced later by Michael Feathers.
+_______________________________________________________________________________________________
+
+SINGLE RESPONSIBILITY PRINCIPLE
+
+A class, module or function  should only have a single responsibility. In other words, they should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated.
+
+Martin defines a responsibility as a reason to change, and that a class, module or function should only have one reason to be changed (rewritten). For example, if you have a class that allows you to compile and print a report. The content of the report could change in the future, and the format of the report printed could change in the future. As the two changes are unrelated to each oter, the class should be split into two seperate classes, so that each class only has one reason to be re-written. The reason we do this is because otherwise a change in one part of the class could cause the other part of the class to break.
+
+Source: https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html
+
+Instead of creating modules based on a flowchart (UML), we should instead begin with a list of difficult design decisions that are likely to be changed. Then we design each module such that the decision is hidden from others.
+
+The Single Responsibility Principle (SRP) states that each module should have one and only one reason to change, which leaves the question, what defines a reason to change? A reason to change does not include refactoring or bug fixing because those are the responsibility of the programmer, not the program. 
+
+A good way to think of this is imagining your program as a company, and each of the classes or modules who are responsible for one thing. If employees are paid double what they were supposed to be paid for a few months, then the head of finance would be fired because it was their job. You wouldn't fire the cto because of a mistake made in a finance department, but you would if a mistake was made in the technology department. If you break another part of the program by making a change to a different part, then essentially you are firing the cto because of a mistake made in the financial department. 
+
+Another way to put the single responsibility principle is to "Gather together the things that change for the same reasons, and seperate those things that change for different reasons".
+
+Whenever you think about this principle, think about each of the different parts of your program as people within an organisation who each have one responsibility. You need to make sure that when you ask one of those people to do something, that it doesn't get in the way of another person doing their job.
+
+_______________________________________________________________________________________________
+
+OPEN-CLOSED PRINCIPLE
+
+source: https://en.wikipedia.org/wiki/SOLID
+
+The open-closed principle is the idea that software entities should be open for extension, but closed for modification.
+
+source: https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle
+
+This means that classes, modules and functions etc should be able to have their behavior extended without the original source code being modified in any way. 
+
+A module will be said to be open if it is still available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.
+
+A module will be said to be closed, if it is availbable for use by other modules, assuming that the module is well encapsulated.
+
+A class is open, since any new class may use it as a parent, adding new features. When a descendent is defined, there is no need to change the original or to disturb its clients.
+
+source: https://blog.cleancoder.com/uncle-bob/2014/05/12/TheOpenClosedPrinciple.html
+
+A modern take on this definition by Robert C. Martin is "You should be able to extend the behaviour of a system without having to modify the system." 
+
+This is amazing! This would mean thet you could add new features to that system without modifying any old code. The features would be added solely by writing new code. Which means that all of the new code should be isolatable features.
+
+There are a vast plethora of tools that can be easily extended without modifying or redeploying them. We can extend them by writing plugins (Vim, VS, Minecraft, VS etc).
+
+The way you get a plugin architecture is to make sure that all dependencies inside the plugin point at the system, and that nothing in the system points out towards the plugins. You can plug in new features and unplug old ones.
+
+______________________________________________________________________________________________
+
+LISKOV SUBSTITUTION PRINCIPLE
+
+source: https://en.wikipedia.org/wiki/SOLID
+
+The Liskov substitution principle states that objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
+
+source: Andy
+
+Say you have a class called rectangle which has a width value that is different to the height value. While you could make a subtype of the rectangle class and call it square, you would not be able to substitute the rectangle for a square, because it would break any part of the program that is expecting a recangle (different height and width). However, you could add a rectangle and a square as subclasses of a class called shape, which would not make any assumptions about the type of shape that it contains.
+
+_______________________________________________________________________________________________
+
+INTERFACE SEGREGATION PRINCIPLE
+
+source: https://en.wikipedia.org/wiki/SOLID
+
+The interface segregation principle states that many client-specific interfaces are better that one general-purpose interface.
+
+source: https://en.wikipedia.org/wiki/Interface_segregation_principle
+
+The ISP states that no client should be forced to depend on methods that it does not use. ISP splits interfaces that are very large into smaller and more specific ones so that clients will only have to know about the methods that are of interest to them. These smaller interfaces are known as 'role interfaces'.
+
+source: https://codeburst.io/understanding-solid-principles-interface-segregation-principle-b2d57026cf6c
+
+When designing interfaces you should always ask yourself the question "Do you really need all the methods on this interface you're using? If not, how can you break them into smaller interfaces?
+
+_______________________________________________________________________________________________
+
+DEPENDENCY INVERSION PRINCIPLE
+
+source: https://en.wikipedia.org/wiki/SOLID
+
+The dependency inversion principle asserts that one should depend on abstractions, [not] concretions.
+
+source: https://en.wikipedia.org/wiki/Dependency_inversion_principle
+
+In object-oriented design, the dependency inversion principle is a specific form of decoupling software modules. The principle states that:
+
+A) High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).
+B) Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
